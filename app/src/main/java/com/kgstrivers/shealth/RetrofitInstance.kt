@@ -18,7 +18,7 @@ class RetrofitInstance {
             logging.level = HttpLoggingInterceptor.Level.BODY
             val client = okhttp3.OkHttpClient.Builder()
             client.addInterceptor(logging)
-            return Retrofit.Builder().baseUrl(BASE_URL).addConverterFactory(GsonConverterFactory.create()).build()
+            return Retrofit.Builder().baseUrl(BASE_URL).client(client.build()).addConverterFactory(GsonConverterFactory.create()).build()
         }
     }
 }
