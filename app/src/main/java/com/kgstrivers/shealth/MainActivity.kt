@@ -15,31 +15,22 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var analytics: FirebaseAnalytics
     lateinit var viewmodel:MainActivityViewModel
-
+    val bundle2 = Bundle()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         analytics = FirebaseAnalytics.getInstance(this)
 
-        val bundle = Bundle()
-        bundle.putString(FirebaseAnalytics.Param.METHOD, "method")
-        analytics.logEvent(FirebaseAnalytics.Event.LOGIN, bundle)
-
-
-        val bundle2 = Bundle()
-        bundle2.putInt("valid_item1", 5)
-        bundle2.putInt("valid_item2", 6)
-        bundle2.putInt("valid_item3", 7)
-        bundle2.putInt("expired_item1", 8)
-        bundle2.putInt("expired_item2", 9)
-        bundle2.putInt("expired_item3", 10)
-        analytics.logEvent("Logged_In_State", bundle2)
-
+        bundle2.putInt("Entry_at_Sign_Up_Page",1)
         initiateviewmodel()
         signupbutton.setOnClickListener{
+            bundle2.putInt("Sign_Up_Button_Clicked", 1)
             signupUser()
+            analytics.logEvent("Sign_UP_page", bundle2)
         }
+
+
 
     }
 
@@ -54,10 +45,12 @@ class MainActivity : AppCompatActivity() {
         viewmodel.getCreateNewUserObser().observe(this, Observer<UserResponse?> {
             if(it == null)
             {
+                bundle2.putInt("Signup_unSuccessful", 4)
                 Toast.makeText(this,"Sign Up Unsuccessful",Toast.LENGTH_LONG).show()
             }
             else{
                 Toast.makeText(this,"Sign Up Successful",Toast.LENGTH_LONG).show()
+                bundle2.putInt("Signup_successful", 5)
             }
         })
     }
