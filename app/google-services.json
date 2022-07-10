@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "169151346649",
+    "project_id": "saathhealth-97d94",
+    "storage_bucket": "saathhealth-97d94.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:169151346649:android:c98f849e22c3fb841d4bc8",
+        "android_client_info": {
+          "package_name": "com.kgstrivers.shealth"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "169151346649-rjpdnjlmbj8es9rg392c688in9kbosqc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCrbeuaSEFtTnlFcamtEUKK0n548YPlqA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "169151346649-rjpdnjlmbj8es9rg392c688in9kbosqc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
