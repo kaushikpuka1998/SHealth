@@ -1,5 +1,6 @@
 package com.kgstrivers.shealth.Activities
 
+import android.app.ProgressDialog
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -21,11 +22,17 @@ class LoginActivity : AppCompatActivity() {
 
     private lateinit var analytics: FirebaseAnalytics
     lateinit var viewmodel:LoginActivityViewModel
+    lateinit var  progressDialog:ProgressDialog
     lateinit var privateaccesstoken:String
     val bundle2 = Bundle()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
+
+        progressDialog = ProgressDialog(this@LoginActivity)
+        progressDialog.setTitle("Logging...")
+        progressDialog.setMessage("Application is loading, please wait")
+        progressDialog.show()
 
 
         val preferences: SharedPreferences =
@@ -37,6 +44,7 @@ class LoginActivity : AppCompatActivity() {
             var iy = Intent(applicationContext,DataActivity::class.java)
             startActivity(iy)
         }else{
+            progressDialog.hide()
             initiateviewmodel()
 
             loginbutton.setOnClickListener {
@@ -51,8 +59,10 @@ class LoginActivity : AppCompatActivity() {
     }
 
     private fun loginuser() {
+        progressDialog.show()
         val userval =Loginuser(emailedittext.text.toString() ,passwordEditText.text.toString())
         viewmodel.loginuser(userval)
+
     }
 
     private fun initiateviewmodel()
@@ -61,9 +71,11 @@ class LoginActivity : AppCompatActivity() {
         viewmodel.loginuserobserver().observe(this, Observer<LoginuserResponse?> {
             if(it!=null)
             {
+                progressDialog.hide()
                 if(it.result==true && it.message == "Already LoggedIn")
                 {
                     Toast.makeText(this,it.message, Toast.LENGTH_LONG).show()
+                    progressDialog.hide()
                     var iy = Intent(applicationContext,DataActivity::class.java)
                     startActivity(iy)
                 }
@@ -73,6 +85,7 @@ class LoginActivity : AppCompatActivity() {
                     val preferences: SharedPreferences =
                        applicationContext.getSharedPreferences("MY_APP", Context.MODE_PRIVATE)
                     preferences.edit().putString("TOKEN", privateaccesstoken).apply()
+                    progressDialog.hide()
                     var iy = Intent(applicationContext,DataActivity::class.java)
                     startActivity(iy)
                 }
