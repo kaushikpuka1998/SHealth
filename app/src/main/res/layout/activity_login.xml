@@ -43,7 +43,7 @@
         app:layout_constraintTop_toBottomOf="@+id/emailedittext" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/loginbutton"
         android:layout_width="108dp"
         android:layout_height="46dp"
         android:layout_marginStart="148dp"

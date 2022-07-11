@@ -25,7 +25,7 @@ class LoginActivityViewModel:ViewModel() {
     }
 
 
-    fun signupNewUser(user: Loginuser)
+    fun loginuser(user: Loginuser)
     {
         val retrofitInstance =  RetrofitInstance.getRetroFitInstance().create(RetroServiceInterface::class.java)
         val callInInstance =  retrofitInstance.LoginAccount(user);
