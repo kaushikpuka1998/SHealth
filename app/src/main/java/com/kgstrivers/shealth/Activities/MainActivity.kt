@@ -1,4 +1,4 @@
-package com.kgstrivers.shealth
+package com.kgstrivers.shealth.Activities
 
 import android.os.Bundle
 import android.widget.Toast
@@ -8,6 +8,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.kgstrivers.shealth.Models.UserResponse
 import com.kgstrivers.shealth.Models.Usersval
+import com.kgstrivers.shealth.R
 import com.kgstrivers.shealth.ViewModels.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 

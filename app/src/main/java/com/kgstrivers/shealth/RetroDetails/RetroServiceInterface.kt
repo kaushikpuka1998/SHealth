@@ -1,5 +1,7 @@
-package com.kgstrivers.shealth
+package com.kgstrivers.shealth.RetroDetails
 
+import com.kgstrivers.shealth.Models.Loginuser
+import com.kgstrivers.shealth.Models.LoginuserResponse
 import com.kgstrivers.shealth.Models.UserResponse
 import com.kgstrivers.shealth.Models.Usersval
 import retrofit2.Call
@@ -10,4 +12,8 @@ interface RetroServiceInterface {
 
     @POST("signup")
     fun createAccount(@Body params: Usersval) : Call<UserResponse>
+
+
+    @POST("login")
+    fun LoginAccount(@Body params: Loginuser) : Call<LoginuserResponse>
 }

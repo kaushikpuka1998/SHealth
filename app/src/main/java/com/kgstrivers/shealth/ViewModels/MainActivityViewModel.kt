@@ -4,8 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.kgstrivers.shealth.Models.UserResponse
 import com.kgstrivers.shealth.Models.Usersval
-import com.kgstrivers.shealth.RetroServiceInterface
-import com.kgstrivers.shealth.RetrofitInstance
+import com.kgstrivers.shealth.RetroDetails.RetroServiceInterface
+import com.kgstrivers.shealth.RetroDetails.RetrofitInstance
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

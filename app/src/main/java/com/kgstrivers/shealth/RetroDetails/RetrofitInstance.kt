@@ -1,6 +1,5 @@
-package com.kgstrivers.shealth
+package com.kgstrivers.shealth.RetroDetails
 
-import com.squareup.okhttp.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

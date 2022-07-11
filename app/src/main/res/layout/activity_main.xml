@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
 
     <TextView
@@ -13,12 +13,12 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
         android:text="Email"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/editTextEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.159"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.231" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextName"
+        app:layout_constraintVertical_bias="0.634" />
 
     <EditText
         android:id="@+id/editTextName"
@@ -43,8 +43,10 @@
         android:fontFamily="sans-serif-black"
         android:hint="Enter Your Email ID"
         android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/edittextpassword"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/nameview"
@@ -52,23 +54,24 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
         android:text="Name"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/editTextName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.165"
+        app:layout_constraintHorizontal_bias="0.171"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.073" />
+        app:layout_constraintVertical_bias="0.784" />
 
     <EditText
         android:id="@+id/password"
         android:layout_width="283dp"
         android:layout_height="56dp"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="308dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="304dp"
         android:ems="10"
         android:fontFamily="sans-serif-black"
         android:hint="Password"
         android:inputType="textPassword"
+        app:layout_constraintBottom_toTopOf="@+id/textviewphone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,12 +81,12 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
         android:text="Password"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/password"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.172"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.389" />
+        app:layout_constraintVertical_bias="0.955" />
 
     <TextView
         android:id="@+id/textviewphone"
@@ -91,19 +94,19 @@
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-black"
         android:text="Phone"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/editTextPhone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.162"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.528" />
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/editTextPhone"
         android:layout_width="283dp"
         android:layout_height="56dp"
-        android:layout_marginStart="60dp"
-        android:layout_marginTop="408dp"
+        android:layout_marginStart="64dp"
+        android:layout_marginTop="460dp"
         android:ems="10"
         android:fontFamily="sans-serif-black"
         android:hint="Enter Your Phone Number"
@@ -115,11 +118,12 @@
         android:id="@+id/signupbutton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="164dp"
+        android:layout_marginTop="40dp"
+
         android:text="Sign Up"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
