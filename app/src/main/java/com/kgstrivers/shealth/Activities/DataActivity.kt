@@ -21,6 +21,21 @@ import kotlinx.android.synthetic.main.activity_login.*
 class DataActivity : AppCompatActivity() {
     lateinit var viewmodel: LogoutViewModel
     lateinit var  progressDialog: ProgressDialog
+
+    private var backPressedtime: Long = 0
+    override fun onBackPressed() { //Double Back Pressed  and Exit Function
+        if (backPressedtime + 2000 > System.currentTimeMillis()) {
+            super.onBackPressed()
+            val intnt = Intent(Intent.ACTION_MAIN)
+            intnt.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            intnt.addCategory(Intent.CATEGORY_HOME)
+            startActivity(intnt)
+
+        } else {
+            Toast.makeText(this, "Press Back again to exit", Toast.LENGTH_SHORT).show()
+        }
+        backPressedtime = System.currentTimeMillis()
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_data)
@@ -69,6 +84,7 @@ class DataActivity : AppCompatActivity() {
 
             }
             else{
+                progressDialog.hide()
                 Toast.makeText(this,"Login In Unsuccessful", Toast.LENGTH_LONG).show()
                 //bundle2.putInt("Signup_successful", 5)
             }

@@ -29,30 +29,34 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        progressDialog = ProgressDialog(this@LoginActivity)
-        progressDialog.setTitle("Logging...")
-        progressDialog.setMessage("Application is loading, please wait")
-        progressDialog.show()
+
 
 
         val preferences: SharedPreferences =
             applicationContext.getSharedPreferences("MY_APP", MODE_PRIVATE)
         val retrivedToken = preferences.getString("TOKEN", null)
 
+
         if(retrivedToken!=null)
         {
             var iy = Intent(applicationContext,DataActivity::class.java)
             startActivity(iy)
         }else{
-            progressDialog.hide()
-            initiateviewmodel()
 
+            progressDialog = ProgressDialog(this@LoginActivity)
+            progressDialog.setTitle("Logging...")
+            progressDialog.setMessage("Application is loading, please wait")
+            progressDialog.show()
+
+            initiateviewmodel()
+            progressDialog.hide()
             loginbutton.setOnClickListener {
                 loginuser();
             }
             noaacount.setOnClickListener{
                 val loginintent = Intent(this@LoginActivity ,MainActivity::class.java)
                 startActivity((loginintent))
+
 
             }
         }

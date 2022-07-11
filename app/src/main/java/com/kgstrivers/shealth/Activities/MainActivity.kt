@@ -1,5 +1,6 @@
 package com.kgstrivers.shealth.Activities
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -52,6 +53,10 @@ class MainActivity : AppCompatActivity() {
             else{
                 Toast.makeText(this,"Sign Up Successful",Toast.LENGTH_LONG).show()
                 bundle2.putInt("Signup_successful", 5)
+
+                val loginintent = Intent(this@MainActivity ,LoginActivity::class.java)
+                startActivity((loginintent))
+                this.finish();
             }
         })
     }
