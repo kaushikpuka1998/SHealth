@@ -6,13 +6,21 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import com.kgstrivers.shealth.Models.Firebasedata
 import com.kgstrivers.shealth.Models.Loginuser
 import com.kgstrivers.shealth.Models.LoginuserResponse
 import com.kgstrivers.shealth.Models.LogoutResponse
 import com.kgstrivers.shealth.R
+import com.kgstrivers.shealth.RecyclerviewAdapters.DataRecyclerViewHolder
 import com.kgstrivers.shealth.ViewModels.LoginActivityViewModel
 import com.kgstrivers.shealth.ViewModels.LogoutViewModel
 import kotlinx.android.synthetic.main.activity_data.*
@@ -45,7 +53,7 @@ class DataActivity : AppCompatActivity() {
         progressDialog.setMessage("please wait")
 
         initiateviewmodel();
-
+        getDatafromFirebase()
         logoutbutton.setOnClickListener {
 
 
@@ -53,6 +61,42 @@ class DataActivity : AppCompatActivity() {
             logoutuser()
 
         }
+
+
+        recycleview.layoutManager = LinearLayoutManager(this@DataActivity)
+
+
+
+    }
+
+
+    private fun getDatafromFirebase()
+    {
+        val db = FirebaseDatabase.getInstance().getReference("Allvideos")
+
+
+        db.addValueEventListener(object :ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.exists())
+                {
+                    var  List = ArrayList<Firebasedata>()
+                    for(singlesnapshot in snapshot.children)
+                    {
+                        val response = singlesnapshot.getValue(Firebasedata::class.java)
+                        if (response != null) {
+                            Log.d("DBBBBB", response.link+" =========>"+response.title);
+                            List.add(response)
+                        }
+                    }
+                   recycleview.adapter =  DataRecyclerViewHolder(List)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                System.out.println("Wrong at"+ error)
+            }
+        })
+//        Log.d("DBBBBB", db.toString());
     }
 
     private fun logoutuser() {

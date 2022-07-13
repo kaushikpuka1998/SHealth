@@ -7,3 +7,4 @@ data class DataClass(val name: String?, val email: String?,val phone: String?,va
 data class Loginuser(val email: String?,val password: String?)
 data class LoginuserResponse(val result:Boolean? , val message:String? ,val accesstoken:String?)
 data class LogoutResponse(val success: Boolean?,val message: String?)
+data class Firebasedata(val title:String? ="",val link:String? ="")
